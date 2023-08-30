@@ -1,0 +1,76 @@
+{
+  "songs": [
+    {
+      "bg": "#800080",
+      "artist": "Daegho, PinkII",
+      "songName": "Dirty Vibe",
+      "files": {
+        "song": "https://github.com/Cardrhyme206113/hosting/blob/main/%5BSPOTIFY-DOWNLOADER.COM%5D%20Dirty%20Viibe.mp3",
+        "cover": "https://github.com/Cardrhyme206113/hosting/blob/main/044f8cd257375412c25e9e1b8acbf35b.1000x1000x1%20(1)%20(1).jpg"
+      }
+    },
+    {
+      "bg": "#808080",
+      "artist": "The Dive, Clovis Reyes",
+      "songName": "Fluxxwave (Lay With Me)",
+      "files": {
+        "song": "https://github.com/Cardrhyme206113/hosting/blob/main/%5BSPOTIFY-DOWNLOADER.COM%5D%20Fluxxwave%20(Lay%20With%20Me).mp3",
+        "cover": "https://github.com/Cardrhyme206113/hosting/blob/main/download%20(1)%20(1).jpg"
+      }
+    },
+    {
+      "bg": "#008080",
+      "artist": "Farizki",
+      "songName": "In Heat X BroklynBloodPop!",
+      "files": {
+       "song": "https://github.com/Cardrhyme206113/hosting/blob/main/%5BSPOTIFY-DOWNLOADER.COM%5D%20In%20Heat%20X%20BrooklynBloodPop!.mp3",
+       "cover": "https://github.com/Cardrhyme206113/hosting/blob/main/download%20(2)%20(1)%20(1).jpg"
+      }
+    },
+    {
+      "bg": "#880808",
+      "artist": "SHADXWBXRN",
+      "songName": "MAYHEM",
+      "files": {
+      "song": "https://github.com/Cardrhyme206113/hosting/blob/main/%5BSPOTIFY-DOWNLOADER.COM%5D%20MAYHEM.mp3",
+      "cover": "https://github.com/Cardrhyme206113/hosting/blob/main/0a34bedb573bc39d7b67f826b27c358cca6627feb52ac3ca4394ce21fcbdad5d%20(1)%20(1).jpeg"
+      }
+    },
+    {
+      "bg": "#FF0000",
+      "artist": "SHADXWBXRN",
+      "songName": "SHADOW DANCE",
+      "files": {
+      "song": "https://github.com/Cardrhyme206113/hosting/blob/main/%5BSPOTIFY-DOWNLOADER.COM%5D%20SHADOW%20DANCE.mp3",
+      "cover": "https://github.com/Cardrhyme206113/hosting/blob/main/download%20(3)%20(1)%20(1).jpg"
+      }
+    },
+    {
+      "bg": "#7953A9",
+      "artist": "MUPP, glichery",
+      "songName": "Wisteria",
+      "files": {
+      "song": "https://github.com/Cardrhyme206113/hosting/blob/main/%5BSPOTIFY-DOWNLOADER.COM%5D%20Wisteria.mp3",
+      "cover": "https://github.com/Cardrhyme206113/hosting/blob/main/download%20(4)%20(1)%20(1).jpg"
+      }
+    },
+    {
+      "bg": "#3E236E",
+      "artist": "CYPARISS",
+      "songName": "Make'em Suffer",
+      "files": {
+      "song": "https://github.com/Cardrhyme206113/hosting/blob/main/%5BSPOTIFY-DOWNLOADER.COM%5D%20make%20em%20suffer.mp3",
+      "cover": "https://github.com/Cardrhyme206113/hosting/blob/main/image_2023-08-30_115147318%20(1).jpg"
+      }
+    },
+    {
+      "bg": "#0e4aac",
+      "artist": "NUEKI, TOLCHONOV",
+      "songName": "SO TIRED",
+      "files": {
+      "song": "https://github.com/Cardrhyme206113/hosting/blob/main/spotifydown.com%20-%20SO%20TIRED.mp3",
+      "cover": "https://github.com/Cardrhyme206113/hosting/blob/main/image_2023-08-30_121037162%20(1).jpg"
+      }
+    }
+  ]
+}
