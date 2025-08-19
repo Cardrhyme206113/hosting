@@ -1,0 +1,231 @@
+{
+  "remark": "This file is only used for quick deployment.",
+  "languages": [
+    {
+      "label": "English",
+      "value": "en_us"
+    }
+  ],
+  "packages": [
+    {
+      "language": "en_us",
+      "gameType": "Minecraft",
+      "description": "[Purpur] High-performance fork of Paper for Minecraft 1.21.8.",
+      "title": "Minecraft 1.21.8 (Purpur)",
+      "image": "https://staticg.sportskeeda.com/editor/2024/07/86b56-17205134971380-1920.jpg",
+      "category": "mc-purpur",
+      "runtime": "Java 21+",
+      "hardware": "RAM 4G+",
+      "size": "55MB",
+      "remark": "Only Purpur included",
+      "targetLink": "https://github.com/SkyKingPX/MCSManagerServerSoftware/releases/download/PurpurMC/purpur-1.21.8-2481.jar",
+      "author": "purpurmc.org",
+      "setupInfo": {
+        "type": "minecraft/java/purpur",
+        "startCommand": "java -Xms4096M -Xmx4096M -jar purpur-1.21.8-2481.jar nogui",
+        "stopCommand": "stop",
+        "updateCommand": "",
+        "ie": "utf-8",
+        "oe": "utf-8"
+      }
+    },
+    {
+      "language": "en_us",
+      "gameType": "Minecraft",
+      "description": "[Purpur] High-performance fork of Paper for Minecraft 1.20.1.",
+      "title": "Minecraft 1.20.1 (Purpur)",
+      "image": "https://wallpaperaccess.com/full/4003613.jpg",
+      "category": "mc-purpur",
+      "runtime": "Java 17+",
+      "hardware": "RAM 4G+",
+      "size": "50MB",
+      "remark": "Only Purpur included",
+      "targetLink": "https://github.com/SkyKingPX/MCSManagerServerSoftware/releases/download/PurpurMC/purpur-1.20.1-2062.jar",
+      "author": "purpurmc.org",
+      "setupInfo": {
+        "type": "minecraft/java/purpur",
+        "startCommand": "java -Xms4096M -Xmx4096M -jar purpur-1.20.1-2062.jar nogui",
+        "stopCommand": "stop",
+        "updateCommand": "",
+        "ie": "utf-8",
+        "oe": "utf-8"
+      }
+    },
+    {
+      "language": "en_us",
+      "gameType": "Minecraft",
+      "description": "[Paper] A high-performance fork of the Vanilla server software for 1.21.8.",
+      "title": "Minecraft 1.21.8 (Paper)",
+      "image": "https://media.forgecdn.net/attachments/880/251/misty-mountain-sarge.jpg",
+      "category": "mc-paper",
+      "runtime": "Java 21+",
+      "hardware": "RAM 4G+",
+      "size": "50MB",
+      "remark": "Only Paper included",
+      "targetLink": "https://api.papermc.io/v2/projects/paper/versions/1.21.8/builds/10/downloads/paper-1.21.8-10.jar",
+      "author": "papermc.io",
+      "setupInfo": {
+        "type": "minecraft/java/paper",
+        "startCommand": "java -Xms4096M -Xmx4096M -jar paper-1.21.8-10.jar nogui",
+        "stopCommand": "stop",
+        "updateCommand": "",
+        "ie": "utf-8",
+        "oe": "utf-8"
+      }
+    },
+    {
+      "language": "en_us",
+      "gameType": "Minecraft",
+      "description": "A pre-packaged Paper 1.21.1 server with basic plugins included. Great for beginners or low-spec machines.",
+      "title": "Minecraft 1.21.1 (Paper + Plugins)",
+      "image": "https://www.minecraft.net/content/dam/games/minecraft/screenshots/Cherry-Grove-Cropped-1920x1080.jpg",
+      "category": "mc-paper",
+      "runtime": "Java 17+",
+      "hardware": "RAM 4G+",
+      "size": "250MB",
+      "remark": "Includes basic plugins for a quick start!",
+      "targetLink": "https://cloud.alongw.cn/f/DzvHK/Paper-1.21.1-ZH.zip",
+      "author": "alongw.cn",
+      "setupInfo": {
+        "type": "minecraft/java",
+        "startCommand": "java -Xms4096M -Xmx4096M -jar server.jar nogui",
+        "stopCommand": "stop",
+        "updateCommand": "",
+        "ie": "utf-8",
+        "oe": "utf-8"
+      }
+    },
+    {
+      "language": "en_us",
+      "gameType": "Minecraft",
+      "description": "Recommended for small to medium servers. A pre-packaged Paper 1.20.4 server with Essentials, chest protection, and other core plugins.",
+      "title": "Minecraft 1.20.4 (Paper + Plugins)",
+      "image": "https://staticg.sportskeeda.com/editor/2024/07/86b56-17205134971380-1920.jpg",
+      "category": "mc-paper",
+      "runtime": "Java 21+",
+      "hardware": "RAM 6G+",
+      "size": "140MB",
+      "remark": "Includes essential plugins. Minimum 8GB RAM recommended.",
+      "targetLink": "https://url.alww.top/mcsm/paper1.20.4.zip",
+      "author": "alongw.cn",
+      "setupInfo": {
+        "type": "minecraft/java",
+        "startCommand": "java -Xms6144M -Xmx6144M -jar server.jar nogui",
+        "stopCommand": "stop",
+        "updateCommand": "",
+        "ie": "utf-8",
+        "oe": "utf-8"
+      }
+    },
+    {
+      "language": "en_us",
+      "gameType": "Minecraft",
+      "description": "Tip: The default startup command is \"sh ./run.sh\". For Windows, change it to \"run.bat\" after installation.",
+      "title": "NeoForge 1.21.8 (Supports Mods)",
+      "image": "https://images.alphacoders.com/133/1334983.png",
+      "category": "mc-neoforge",
+      "runtime": "Java 21+",
+      "hardware": "RAM 8G+",
+      "size": "7MB",
+      "remark": "Minecraft NeoForge",
+      "targetLink": "https://maven.neoforged.net/releases/net/neoforged/neoforge/21.8.4-beta/neoforge-21.8.4-beta-installer.jar",
+      "author": "neoforged.net",
+      "setupInfo": {
+        "type": "minecraft/java",
+        "startCommand": "sh ./run.sh",
+        "stopCommand": "stop",
+        "updateCommand": "java -jar neoforge-21.8.4-beta-installer.jar --installServer",
+        "ie": "utf-8",
+        "oe": "utf-8"
+      }
+    },
+    {
+      "language": "en_us",
+      "gameType": "Minecraft",
+      "description": "Tip: The default startup command is \"sh ./run.sh\". For Windows, change it to \"run.bat\" after installation.",
+      "title": "Forge 1.21.8 (Supports Mods)",
+      "image": "https://images.alphacoders.com/133/1334983.png",
+      "category": "mc-forge",
+      "runtime": "Java 21+",
+      "hardware": "RAM 8G+",
+      "size": "7MB",
+      "remark": "Minecraft Forge",
+      "targetLink": "https://maven.minecraftforge.net/net/minecraftforge/forge/1.21.8-58.0.0/forge-1.21.8-58.0.0-installer.jar",
+      "author": "minecraftforge.net",
+      "setupInfo": {
+        "type": "minecraft/java/forge",
+        "startCommand": "sh ./run.sh",
+        "stopCommand": "stop",
+        "updateCommand": "java -jar forge-1.21.8-58.0.0-installer.jar --installServer",
+        "ie": "utf-8",
+        "oe": "utf-8"
+      }
+    },
+    {
+      "language": "en_us",
+      "gameType": "Minecraft",
+      "description": "Minecraft 1.21.8 with Fabric Loader. The installer will download the server files.",
+      "title": "Fabric 1.21.8 (Supports Mods)",
+      "image": "https://images.alphacoders.com/133/1334983.png",
+      "category": "mc-fabric",
+      "runtime": "Java 21+",
+      "hardware": "RAM 4G+",
+      "size": "5MB",
+      "remark": "Minecraft Fabric",
+      "targetLink": "https://maven.fabricmc.net/net/fabricmc/fabric-installer/1.0.3/fabric-installer-1.0.3.jar",
+      "author": "fabricmc.net",
+      "setupInfo": {
+        "type": "minecraft/java/fabric",
+        "startCommand": "java -Xms4096M -Xmx4096M -jar fabric-server-launch.jar nogui",
+        "stopCommand": "stop",
+        "updateCommand": "java -jar fabric-installer-1.0.3.jar server -mcversion 1.21.8 -downloadMinecraft -noprofile",
+        "ie": "utf-8",
+        "oe": "utf-8"
+      }
+    },
+    {
+      "language": "en_us",
+      "gameType": "Minecraft",
+      "description": "[Vanilla] The original Minecraft server experience for version 1.21.8.",
+      "title": "Minecraft 1.21.8 (Vanilla)",
+      "image": "https://wallpaperaccess.com/full/4003613.jpg",
+      "category": "mc-vanilla",
+      "runtime": "Java 21+",
+      "hardware": "RAM 2G+",
+      "size": "55MB",
+      "remark": "Official Minecraft Java Server",
+      "targetLink": "https://piston-data.mojang.com/v1/objects/6bce4ef400e4efaa63a13d5e6f6b500be969ef81/server.jar",
+      "author": "Mojang Studios",
+      "setupInfo": {
+        "type": "minecraft/java",
+        "startCommand": "java -Xms2048M -Xmx2048M -jar server.jar nogui",
+        "stopCommand": "stop",
+        "updateCommand": "",
+        "ie": "utf-8",
+        "oe": "utf-8"
+      }
+    },
+    {
+      "language": "en_us",
+      "gameType": "Minecraft",
+      "description": "[Vanilla] The original Minecraft server experience for version 1.20.1.",
+      "title": "Minecraft 1.20.1 (Vanilla)",
+      "image": "https://www.minecraft.net/content/dam/games/minecraft/screenshots/Cherry-Grove-Cropped-1920x1080.jpg",
+      "category": "mc-vanilla",
+      "runtime": "Java 17+",
+      "hardware": "RAM 2G+",
+      "size": "50MB",
+      "remark": "Official Minecraft Java Server",
+      "targetLink": "https://piston-data.mojang.com/v1/objects/84194a2f286ef7c14ed7ce0090dba59902951553/server.jar",
+      "author": "Mojang Studios",
+      "setupInfo": {
+        "type": "minecraft/java",
+        "startCommand": "java -Xms2048M -Xmx2048M -jar server.jar nogui",
+        "stopCommand": "stop",
+        "updateCommand": "",
+        "ie": "utf-8",
+        "oe": "utf-8"
+      }
+    }
+  ]
+}
