@@ -48,9 +48,7 @@ jobs:
 
             # Recreate the skipped Java trigger and give Maven a stable JDK.
             ln -sfn java-21-openjdk rootfs/usr/lib/jvm/default-jvm
-            cat > rootfs/etc/mavenrc <<'EOF'
-export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
-EOF
+            printf '%s\n' 'export JAVA_HOME=/usr/lib/jvm/java-21-openjdk' > rootfs/etc/mavenrc
             chmod 644 rootfs/etc/mavenrc
 
             # PRoot supplies Android's /dev. A temporary regular file is enough
