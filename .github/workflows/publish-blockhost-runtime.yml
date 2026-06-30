@@ -28,16 +28,13 @@ jobs:
           (
             set -euxo pipefail
             curl -L --fail --retry 4 --retry-delay 3 \
-              'https://sdmntprpolandcentral.oaiusercontent.com/files/00000000-e674-720a-a409-fb4f7e52b2c4/raw?se=2026-06-30T19:44:30Z&sp=r&sv=2026-02-06&sr=b&scid=86bb33cd-dcc7-586d-80cc-f72dc3756981&skoid=76024c37-11e2-4c92-aa07-7e519fbe2d0f&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-06-30T04:37:15Z&ske=2026-07-02T04:37:15Z&sks=b&skv=2026-02-06&sig=AP6gKcdXXBgJ6S7fmOPZAYcdNq/pie1Mw7jK8ZZiP/I%3D' \
-              -o artifact.zip
-            mkdir artifact rootfs
-            unzip -q artifact.zip -d artifact
-            apk=$(find artifact -type f -name '*.apk' | head -n1)
-            test -n "$apk"
-            unzip -p "$apk" assets/runtime-aarch64.tar > runtime-aarch64.tar
-            test "$(stat -c%s runtime-aarch64.tar)" -gt 500000000
-            tar -xf runtime-aarch64.tar -C rootfs
+              'https://github.com/Cardrhyme206113/hosting/releases/download/blockhost-runtime-v1/runtime-aarch64.tar.gz' \
+              -o runtime-source.tar.gz
+            mkdir rootfs
+            tar -xzf runtime-source.tar.gz -C rootfs
 
+            # apk.static assembled the target filesystem with --no-scripts.
+            # Recreate BusyBox's skipped post-install applet symlinks.
             sudo cp /usr/bin/qemu-aarch64-static rootfs/usr/bin/
             sudo chroot rootfs /bin/busybox --list-full > busybox-applets.txt
             while IFS= read -r applet; do
@@ -49,7 +46,11 @@ jobs:
               fi
             done < busybox-applets.txt
 
+            # java-common's skipped trigger normally creates this.
             ln -sfn java-21-openjdk rootfs/usr/lib/jvm/default-jvm
+
+            # PRoot supplies Android's /dev. A temporary regular file is enough
+            # to validate Git and Maven in this CI chroot.
             mkdir -p rootfs/dev
             : > rootfs/dev/null
             chmod 666 rootfs/dev/null
@@ -61,7 +62,6 @@ jobs:
             sudo chroot rootfs /usr/bin/mvn -version
 
             sudo rm -f rootfs/usr/bin/qemu-aarch64-static rootfs/dev/null
-            rm -f runtime-aarch64.tar
             tar --numeric-owner --owner=0 --group=0 --format=posix -C rootfs -cf runtime-aarch64.tar .
             gzip -6 runtime-aarch64.tar
             sha256sum runtime-aarch64.tar.gz | awk '{print $1}' > runtime-aarch64.tar.gz.sha256
@@ -89,6 +89,4 @@ jobs:
         run: |
           set -euxo pipefail
           tag=blockhost-runtime-v1
-          gh release view "$tag" >/dev/null 2>&1 || \
-            gh release create "$tag" --title 'BlockHost ARM64 Runtime v1' --notes 'Prebuilt Alpine ARM64 runtime with Java 17/21, Git and Maven for BlockHost.'
           gh release upload "$tag" runtime-aarch64.tar.gz runtime-aarch64.tar.gz.sha256 --clobber
