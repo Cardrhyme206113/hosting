@@ -46,8 +46,12 @@ jobs:
               fi
             done < busybox-applets.txt
 
-            # java-common's skipped trigger normally creates this.
+            # Recreate the skipped Java trigger and give Maven a stable JDK.
             ln -sfn java-21-openjdk rootfs/usr/lib/jvm/default-jvm
+            cat > rootfs/etc/mavenrc <<'EOF'
+export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+EOF
+            chmod 644 rootfs/etc/mavenrc
 
             # PRoot supplies Android's /dev. A temporary regular file is enough
             # to validate Git and Maven in this CI chroot.
@@ -55,11 +59,11 @@ jobs:
             : > rootfs/dev/null
             chmod 666 rootfs/dev/null
 
-            sudo chroot rootfs /bin/bash --version
-            sudo chroot rootfs /usr/bin/java -version
-            sudo chroot rootfs /usr/lib/jvm/java-17-openjdk/bin/java -version
-            sudo chroot rootfs /usr/bin/git --version
-            sudo chroot rootfs /usr/bin/mvn -version
+            sudo chroot rootfs /usr/bin/env -i \
+              HOME=/root USER=root LANG=C.UTF-8 TERM=xterm-256color \
+              PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
+              SHELL=/bin/bash \
+              /bin/bash -lc 'bash --version && java -version && /usr/lib/jvm/java-17-openjdk/bin/java -version && git --version && mvn -version'
 
             sudo rm -f rootfs/usr/bin/qemu-aarch64-static rootfs/dev/null
             tar --numeric-owner --owner=0 --group=0 --format=posix -C rootfs -cf runtime-aarch64.tar .
