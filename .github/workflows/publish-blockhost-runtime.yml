@@ -1,0 +1,94 @@
+name: Publish BlockHost runtime
+
+on:
+  push:
+    branches: [publish-blockhost-runtime-v1]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install ARM64 userspace emulator for runtime preparation
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y qemu-user-static binfmt-support
+
+      - name: Download, repair and validate BlockHost runtime
+        shell: bash
+        run: |
+          set +e
+          (
+            set -euxo pipefail
+            curl -L --fail --retry 4 --retry-delay 3 \
+              'https://github.com/Cardrhyme206113/hosting/releases/download/blockhost-runtime-v1/runtime-aarch64.tar.gz' \
+              -o runtime-source.tar.gz
+            mkdir rootfs
+            tar -xzf runtime-source.tar.gz -C rootfs
+
+            # apk.static assembled the target filesystem with --no-scripts.
+            # Recreate BusyBox's skipped post-install applet symlinks.
+            sudo cp /usr/bin/qemu-aarch64-static rootfs/usr/bin/
+            sudo chroot rootfs /bin/busybox --list-full > busybox-applets.txt
+            while IFS= read -r applet; do
+              rel="${applet#/}"
+              target="rootfs/$rel"
+              if [ ! -e "$target" ] && [ ! -L "$target" ]; then
+                mkdir -p "$(dirname "$target")"
+                ln -s /bin/busybox "$target"
+              fi
+            done < busybox-applets.txt
+
+            # Recreate the skipped Java trigger and give Maven a stable JDK.
+            ln -sfn java-21-openjdk rootfs/usr/lib/jvm/default-jvm
+            printf '%s\n' 'export JAVA_HOME=/usr/lib/jvm/java-21-openjdk' > rootfs/etc/mavenrc
+            chmod 644 rootfs/etc/mavenrc
+
+            # PRoot supplies Android's /dev. A temporary regular file is enough
+            # to validate Git and Maven in this CI chroot.
+            mkdir -p rootfs/dev
+            : > rootfs/dev/null
+            chmod 666 rootfs/dev/null
+
+            sudo chroot rootfs /usr/bin/env -i \
+              HOME=/root USER=root LANG=C.UTF-8 TERM=xterm-256color \
+              PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
+              SHELL=/bin/bash \
+              /bin/bash -lc 'bash --version && java -version && /usr/lib/jvm/java-17-openjdk/bin/java -version && git --version && mvn -version'
+
+            sudo rm -f rootfs/usr/bin/qemu-aarch64-static rootfs/dev/null
+            tar --numeric-owner --owner=0 --group=0 --format=posix -C rootfs -cf runtime-aarch64.tar .
+            gzip -6 runtime-aarch64.tar
+            sha256sum runtime-aarch64.tar.gz | awk '{print $1}' > runtime-aarch64.tar.gz.sha256
+            ls -lh runtime-aarch64.tar.gz runtime-aarch64.tar.gz.sha256
+          ) > runtime-repair.log 2>&1
+          status=$?
+          cat runtime-repair.log
+          echo "$status" > runtime-repair.status
+          exit "$status"
+
+      - name: Upload runtime repair diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: blockhost-runtime-repair-diagnostics
+          path: |
+            runtime-repair.log
+            runtime-repair.status
+            busybox-applets.txt
+
+      - name: Publish public runtime release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euxo pipefail
+          tag=blockhost-runtime-v1
+          gh release upload "$tag" runtime-aarch64.tar.gz runtime-aarch64.tar.gz.sha256 --clobber
