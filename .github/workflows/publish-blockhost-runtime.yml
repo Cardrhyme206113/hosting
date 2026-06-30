@@ -3,6 +3,8 @@ name: Publish BlockHost runtime
 on:
   push:
     branches: [publish-blockhost-runtime-v1]
+  pull_request:
+    branches: [main]
 
 permissions:
   contents: write
